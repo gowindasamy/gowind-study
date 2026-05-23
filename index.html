@@ -55,6 +55,19 @@ body{
     color:#ffbf00;
 }
 
+/* LOGOUT */
+
+.logout-btn{
+    margin-left:auto;
+    background:red;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
 /* DRAWER */
 
 .drawer{
@@ -96,13 +109,31 @@ body{
     font-weight:bold;
 }
 
+/* CLOSE BUTTON */
+
 .close-btn{
     position:absolute;
-    right:20px;
-    top:20px;
-    color:#ffbf00;
-    font-size:30px;
+    right:15px;
+    top:15px;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#ffbf00;
+    color:black;
+    font-size:26px;
+    font-weight:bold;
     cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 0 10px #000;
+    transition:0.3s;
+}
+
+.close-btn:hover{
+    transform:scale(1.1);
+    background:white;
 }
 
 /* MAIN */
@@ -260,6 +291,8 @@ body{
     text-align:center;
 }
 
+/* DRAWER ITEMS */
+
 .creator-box{
     margin:15px;
     background:#0d0d0d;
@@ -329,57 +362,7 @@ class="login-btn">
 LOGIN
 </button>
 
-<br><br>
-
-<button onclick="showSignup()"
-class="login-btn">
-SIGN UP
-</button>
-
 <p id="error"></p>
-
-</div>
-
-</div>
-
-<!-- SIGNUP PAGE -->
-
-<div id="signupPage"
-style="
-display:none;
-position:fixed;
-width:100%;
-height:100%;
-background:black;
-top:0;
-left:0;
-z-index:6000;
-justify-content:center;
-align-items:center;
-">
-
-<div class="login-box">
-
-<h1 class="login-title">
-USER SIGNUP
-</h1>
-
-<input type="text"
-id="newUser"
-placeholder="New Username"
-class="login-input">
-
-<input type="password"
-id="newPass"
-placeholder="New Password"
-class="login-input">
-
-<br><br>
-
-<button onclick="signup()"
-class="login-btn">
-CREATE ACCOUNT
-</button>
 
 </div>
 
@@ -397,16 +380,7 @@ Gowind Study
 </div>
 
 <button onclick="logout()"
-style="
-margin-left:auto;
-background:red;
-color:white;
-border:none;
-padding:10px 15px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
-">
+class="logout-btn">
 Logout
 </button>
 
@@ -425,8 +399,10 @@ class="drawer-logo">
 GOWIND STUDY
 </div>
 
-<div class="close-btn"
-onclick="closeDrawer()">✖</div>
+<button class="close-btn"
+onclick="closeDrawer()">
+✕
+</button>
 
 </div>
 
@@ -435,9 +411,17 @@ CREATED BY GOWINDASAMY<br>
 ★ XII PERIMIUM GROUP
 </div>
 
-<div class="quote">📚 STUDY HARD • STAY HUMBLE</div>
-<div class="quote">🔥 SUCCESS NEEDS SACRIFICE</div>
-<div class="quote">🎯 DON’T STOP UNTIL YOU WIN</div>
+<div class="quote">
+📚 STUDY HARD • STAY HUMBLE
+</div>
+
+<div class="quote">
+🔥 SUCCESS NEEDS SACRIFICE
+</div>
+
+<div class="quote">
+🎯 DON’T STOP UNTIL YOU WIN
+</div>
 
 <div class="line"></div>
 
@@ -456,26 +440,6 @@ EDUCATION • DISCIPLINE • SUCCESS
 <p id="visitorCount">
 Visitors : 0
 </p>
-
-<textarea
-id="feedback"
-placeholder="Send Feedback..."
-style="
-width:90%;
-height:100px;
-margin:20px;
-border-radius:20px;
-padding:15px;
-font-size:18px;
-">
-</textarea>
-
-<br>
-
-<button onclick="sendFeedback()"
-class="login-btn">
-SEND FEEDBACK
-</button>
 
 </div>
 
@@ -523,12 +487,37 @@ border-radius:15px;
 margin-top:20px;
 ">
 
-<option value="tamil">TAMIL</option>
-<option value="english">ENGLISH</option>
-<option value="maths">MATHS</option>
-<option value="physics">PHYSICS</option>
-<option value="chemistry">CHEMISTRY</option>
-<option value="cs">COMPUTER SCIENCE</option>
+<option value="11th">
+11TH STANDARD
+</option>
+
+<option value="12th">
+12TH STANDARD
+</option>
+
+<option value="tamil">
+TAMIL
+</option>
+
+<option value="english">
+ENGLISH
+</option>
+
+<option value="maths">
+MATHS
+</option>
+
+<option value="physics">
+PHYSICS
+</option>
+
+<option value="chemistry">
+CHEMISTRY
+</option>
+
+<option value="cs">
+COMPUTER SCIENCE
+</option>
 
 </select>
 
@@ -546,6 +535,13 @@ class="login-btn">
 UPLOAD PDF
 </button>
 
+</div>
+
+<!-- SUBJECTS -->
+
+<div class="subject"
+onclick="openSubject('all')">
+📚 ALL PDFs
 </div>
 
 <div class="subject"
@@ -597,67 +593,11 @@ PDFs : 0
 
 </div>
 
-<!-- WHATSAPP -->
+<script>
 
-<a href="https://wa.me/"
-target="_blank"
-style="
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-font-size:30px;
-text-decoration:none;
-z-index:9999;
-">
-☎
-</a>
+let currentSubject = "";
 
-<!-- AI BUTTON -->
-
-<button onclick="openAI()"
-style="
-position:fixed;
-bottom:90px;
-right:20px;
-background:#ffbf00;
-border:none;
-padding:15px;
-border-radius:50%;
-font-size:25px;
-cursor:pointer;
-z-index:9999;
-">
-🤖
-</button>
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyA25iPenWBkuqzCXSJiCVOirRx8dnf_I2Y",
-
-authDomain: "gowind-study.firebaseapp.com",
-
-projectId: "gowind-study",
-
-storageBucket: "gowind-study.firebasestorage.app",
-
-messagingSenderId: "189466083841",
-
-appId: "1:189466083841:web:1a9802000bb91b15e33600",
-
-measurementId: "G-Y21EXK3Z2P"
-
-};
-
-initializeApp(firebaseConfig);
+/* LOADER */
 
 window.onload = function(){
 
@@ -672,14 +612,14 @@ document.getElementById("loader")
 
 /* DRAWER */
 
-window.openDrawer = function(){
+function openDrawer(){
 
 document.getElementById("drawer")
 .classList.add("active");
 
 }
 
-window.closeDrawer = function(){
+function closeDrawer(){
 
 document.getElementById("drawer")
 .classList.remove("active");
@@ -688,7 +628,7 @@ document.getElementById("drawer")
 
 /* LOGIN */
 
-window.login = function(){
+function login(){
 
 var username =
 document.getElementById("username").value;
@@ -731,57 +671,217 @@ document.getElementById("error")
 
 }
 
-/* SIGNUP */
-
-window.showSignup = function(){
-
-document.getElementById("signupPage")
-.style.display="flex";
-
-}
-
-window.signup = function(){
-
-var user =
-document.getElementById("newUser").value;
-
-var pass =
-document.getElementById("newPass").value;
-
-localStorage.setItem("user",user);
-
-localStorage.setItem("pass",pass);
-
-alert("Signup Success");
-
-document.getElementById("signupPage")
-.style.display="none";
-
-}
-
 /* SUBJECT */
 
-window.openSubject = function(subject){
+function openSubject(subject){
 
-document.getElementById("pdfContainer")
-.innerHTML = "";
+currentSubject = subject;
+
+var container =
+document.getElementById("pdfContainer");
+
+container.innerHTML = "";
+
+var totalCount = 0;
+
+/* ALL PDFs */
+
+if(subject=="all"){
+
+var subjects = [
+
+"11th",
+"12th",
+"tamil",
+"english",
+"maths",
+"physics",
+"chemistry",
+"cs"
+
+];
+
+subjects.forEach(function(sub){
+
+var savedPDFs =
+JSON.parse(
+localStorage.getItem(sub)
+)
+|| [];
+
+totalCount += savedPDFs.length;
+
+savedPDFs.forEach(function(pdfURL){
+
+showPDF(pdfURL);
+
+});
+
+});
+
+}
+
+/* SINGLE SUBJECT */
+
+else{
+
+var savedPDFs =
+JSON.parse(
+localStorage.getItem(subject)
+)
+|| [];
+
+totalCount = savedPDFs.length;
+
+savedPDFs.forEach(function(pdfURL){
+
+showPDF(pdfURL);
+
+});
+
+}
 
 document.getElementById("pdfCount")
-.innerHTML = "PDFs : 0";
+.innerHTML =
+"PDFs : " + totalCount;
+
+}
+
+/* SHOW PDF */
+
+function showPDF(pdfURL){
+
+var container =
+document.getElementById("pdfContainer");
+
+var iframe =
+document.createElement("iframe");
+
+iframe.src = pdfURL;
+
+iframe.style.width = "100%";
+
+iframe.style.height = "500px";
+
+iframe.style.marginTop = "20px";
+
+iframe.style.border = "none";
+
+iframe.style.borderRadius = "20px";
+
+container.appendChild(iframe);
+
+/* DOWNLOAD BUTTON */
+
+var downloadBtn =
+document.createElement("a");
+
+downloadBtn.href = pdfURL;
+
+downloadBtn.innerHTML =
+"⬇ DOWNLOAD PDF";
+
+downloadBtn.target = "_blank";
+
+downloadBtn.style.display =
+"block";
+
+downloadBtn.style.margin =
+"10px";
+
+downloadBtn.style.color =
+"#ffbf00";
+
+downloadBtn.style.fontSize =
+"20px";
+
+container.appendChild(downloadBtn);
 
 }
 
 /* UPLOAD */
 
-window.uploadPDF = async function(){
+async function uploadPDF(){
 
-alert("Cloudinary Upload Ready");
+currentSubject =
+document.getElementById("subjectSelect")
+.value;
+
+var files =
+document.getElementById("pdfUpload")
+.files;
+
+if(files.length==0){
+
+alert("Select PDF");
+
+return;
+
+}
+
+for(var i=0;i<files.length;i++){
+
+var file = files[i];
+
+var formData =
+new FormData();
+
+formData.append(
+"file",
+file
+);
+
+formData.append(
+"upload_preset",
+"svzutvln"
+);
+
+var response =
+await fetch(
+
+"https://api.cloudinary.com/v1_1/dcumfibjl/raw/upload",
+
+{
+method:"POST",
+body:formData
+}
+
+);
+
+var data =
+await response.json();
+
+var pdfURL =
+data.secure_url;
+
+/* SAVE */
+
+var savedPDFs =
+JSON.parse(
+localStorage.getItem(currentSubject)
+)
+|| [];
+
+savedPDFs.push(pdfURL);
+
+localStorage.setItem(
+currentSubject,
+JSON.stringify(savedPDFs)
+);
+
+showPDF(pdfURL);
+
+}
+
+openSubject(currentSubject);
+
+alert("PDF Uploaded Successfully");
 
 }
 
 /* SEARCH */
 
-window.searchSubjects = function(){
+function searchSubjects(){
 
 var input =
 document.getElementById("searchInput")
@@ -811,28 +911,9 @@ subjects[i].style.display =
 
 }
 
-/* FEEDBACK */
-
-window.sendFeedback = function(){
-
-alert("Feedback Sent");
-
-}
-
-/* AI */
-
-window.openAI = function(){
-
-window.open(
-"https://chat.openai.com",
-"_blank"
-);
-
-}
-
 /* LOGOUT */
 
-window.logout = function(){
+function logout(){
 
 location.reload();
 
@@ -858,4 +939,4 @@ document.getElementById("visitorCount")
 </script>
 
 </body>
-    </html>
+</html>
