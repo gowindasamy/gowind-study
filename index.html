@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
+
+<meta name="referrer"
+content="strict-origin-when-cross-origin">
 
 <title>Gowind Study</title>
 
@@ -13,63 +18,88 @@ body{
 margin:0;
 font-family:Arial;
 background:black;
+overflow-x:hidden;
 }
 
-/* LOADER */
+/* LOGIN PAGE */
 
-#loader{
-position:fixed;
+#loginPage{
 width:100%;
-height:100%;
-background:black;
-z-index:99999;
+height:100vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-color:#ffbf00;
-font-size:40px;
+background:black;
+}
+
+#loginPage input{
+width:80%;
+padding:18px;
+margin:10px;
+border:none;
+border-radius:15px;
+font-size:18px;
+outline:none;
+}
+
+#loginPage button{
+width:85%;
+padding:18px;
+border:none;
+border-radius:15px;
+background:#ffbf00;
+font-size:22px;
+font-weight:bold;
 }
 
 /* TOPBAR */
 
 .topbar{
 width:100%;
-background:#111;
+background:black;
 padding:18px;
 display:flex;
 align-items:center;
+justify-content:space-between;
 position:fixed;
 top:0;
 z-index:1000;
+box-shadow:0 0 15px #00e5ff;
+}
+
+.leftTop{
+display:flex;
+align-items:center;
 }
 
 .menu-btn{
-font-size:35px;
+font-size:42px;
 cursor:pointer;
 color:#ffbf00;
+margin-right:25px;
 }
 
 .title{
 font-size:28px;
-margin-left:20px;
 color:#ffbf00;
 }
 
-.logout-btn{
-margin-left:auto;
+.logoutBtn{
 background:red;
 color:white;
 border:none;
-padding:10px 15px;
-border-radius:10px;
+padding:12px 20px;
+border-radius:15px;
+font-size:18px;
 font-weight:bold;
-cursor:pointer;
+margin-right:35px;
 }
 
 /* DRAWER */
 
 .drawer{
-width:78%;
+width:80%;
 height:100%;
 background:#050505;
 position:fixed;
@@ -85,12 +115,22 @@ box-shadow:5px 0px 15px black;
 left:0;
 }
 
+.closeDrawer{
+position:absolute;
+right:20px;
+top:10px;
+font-size:40px;
+color:red;
+cursor:pointer;
+}
+
+/* DRAWER HEADER */
+
 .drawer-header{
 background:#111;
 padding:20px;
 display:flex;
 align-items:center;
-position:relative;
 }
 
 .drawer-logo{
@@ -107,25 +147,47 @@ font-size:32px;
 font-weight:bold;
 }
 
-.close-btn{
-position:absolute;
-right:15px;
-top:15px;
-width:45px;
-height:45px;
-border:none;
-border-radius:50%;
-background:#ffbf00;
-color:black;
-font-size:26px;
+/* CREATOR */
+
+.creator-box{
+margin:15px;
+background:#0d0d0d;
+padding:18px;
+text-align:center;
+color:#00aaff;
+font-size:20px;
 font-weight:bold;
-cursor:pointer;
+border:2px solid #111;
+}
+
+/* QUOTES */
+
+.quote{
+color:#00bfff;
+font-size:18px;
+padding:12px 20px;
+}
+
+/* FOOTER */
+
+.footer{
+color:gray;
+padding:25px;
+font-style:italic;
+font-size:18px;
+}
+
+.line{
+height:2px;
+background:gray;
+margin:15px;
 }
 
 /* MAIN */
 
 .main{
 padding-top:120px;
+display:none;
 }
 
 /* HEADER */
@@ -135,295 +197,226 @@ display:flex;
 align-items:center;
 justify-content:center;
 margin-top:20px;
+animation:fade 2s infinite alternate;
+}
+
+@keyframes fade{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.03);
+}
+
 }
 
 .logo{
-width:110px;
-height:110px;
+width:100px;
+height:100px;
 border-radius:50%;
 margin-right:20px;
 object-fit:cover;
+border:4px solid #00e5ff;
 }
 
 .heading{
-font-size:38px;
+color:#ffbf00;
+font-size:45px;
 font-weight:bold;
-animation:rainbow 3s infinite;
-}
-
-@keyframes rainbow{
-
-0%{color:red;}
-20%{color:orange;}
-40%{color:yellow;}
-60%{color:lime;}
-80%{color:cyan;}
-100%{color:#ff00ff;}
-
-}
-
-/* SEARCH */
-
-#searchInput{
-width:80%;
-padding:15px;
-display:block;
-margin:auto;
-border-radius:30px;
-border:none;
-font-size:18px;
 }
 
 /* SUBJECT */
 
 .subject{
-width:78%;
+width:82%;
 background:#ffbf00;
 margin:22px auto;
-padding:16px;
+padding:20px;
 border-radius:50px;
 text-align:center;
-font-size:20px;
+font-size:24px;
 font-weight:bold;
 cursor:pointer;
 transition:0.3s;
-animation:rainbowBg 4s infinite;
 }
 
 .subject:hover{
 background:white;
+transform:scale(1.03);
 }
 
-@keyframes rainbowBg{
+/* OVERLAY */
 
-0%{background:#ff0000;}
-20%{background:#ff9900;}
-40%{background:#ffee00;}
-60%{background:#00ff00;}
-80%{background:#00ccff;}
-100%{background:#ff00ff;}
-
-}
-
-/* LOGIN */
-
-#loginPage{
+.overlay{
 position:fixed;
 width:100%;
 height:100%;
-background:black;
+background:rgba(0,0,0,0.5);
 top:0;
 left:0;
-z-index:5000;
-display:flex;
-justify-content:center;
-align-items:center;
+display:none;
+z-index:1500;
 }
 
-.login-box{
-width:85%;
-background:#111;
-padding:30px;
-border-radius:20px;
-text-align:center;
+.overlay.show{
+display:block;
 }
 
-.login-title{
-color:#ffbf00;
-font-size:35px;
-}
+/* ADMIN PANEL */
 
-.login-input{
+#adminPanel{
 width:90%;
-padding:15px;
+margin:auto;
+background:#111;
+padding:20px;
+border-radius:20px;
 margin-top:20px;
+display:none;
+}
+
+#adminPanel input,
+#adminPanel select{
+width:95%;
+padding:16px;
+margin-top:15px;
 border:none;
-border-radius:10px;
+border-radius:15px;
 font-size:18px;
 }
 
-.login-btn{
-background:#ffbf00;
-color:black;
-padding:15px 40px;
-border:none;
-border-radius:50px;
-font-size:20px;
-font-weight:bold;
-cursor:pointer;
-}
-
-#error{
-color:red;
+#adminPanel button{
+width:100%;
+padding:18px;
 margin-top:15px;
+border:none;
+border-radius:15px;
+background:#00e5ff;
+font-size:22px;
+font-weight:bold;
 }
 
-/* DASHBOARD */
+/* PDF */
 
-#dashboard{
-display:none;
-padding:20px;
+#pdfCount{
+color:#ffbf00;
 text-align:center;
+margin-top:30px;
+font-size:50px;
 }
 
 #pdfContainer{
 width:95%;
 margin:auto;
-margin-top:30px;
+padding-bottom:100px;
 }
 
-#pdfCount{
-color:#ffbf00;
-text-align:center;
-}
-
-/* PDF CARD */
-
-.pdf-card{
+.pdfCard{
 background:#111;
 padding:20px;
-border-radius:20px;
-margin-top:20px;
-text-align:center;
+border-radius:25px;
+margin-top:25px;
+border:2px solid #00e5ff;
+}
+
+.pdfName{
+color:#ffbf00;
+font-size:28px;
+font-weight:bold;
+}
+
+.pdfSubject,
+.pdfStd{
+color:white;
+font-size:20px;
+margin-top:10px;
+}
+
+.openBtn,
+.downloadBtn,
+.deleteBtn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:15px;
+margin-top:15px;
+font-size:22px;
+font-weight:bold;
 }
 
 .openBtn{
-display:block;
-background:#00ccff;
-color:black;
-padding:15px;
-border-radius:15px;
-font-size:20px;
-font-weight:bold;
-text-decoration:none;
-margin-top:15px;
+background:#00e5ff;
 }
 
 .downloadBtn{
-display:block;
 background:#ffbf00;
-color:black;
-padding:15px;
-border-radius:15px;
-font-size:20px;
-font-weight:bold;
-text-decoration:none;
+}
+
+.deleteBtn{
+background:red;
+color:white;
+}
+
+#uploadStatus{
+color:#00ff90;
+text-align:center;
+font-size:24px;
 margin-top:15px;
-}
-
-/* FOOTER */
-
-.creator-box{
-margin:15px;
-background:#0d0d0d;
-padding:18px;
-text-align:center;
-color:#008cff;
-font-size:20px;
 font-weight:bold;
-border:2px solid #111;
 }
 
-.quote{
-color:#00bfff;
-font-size:18px;
-padding:12px 20px;
-}
-
-.footer{
-color:gray;
-padding:25px;
-font-style:italic;
-font-size:18px;
-text-align:center;
-}
-
-.line{
-height:2px;
-background:gray;
-margin:15px;
+#selectedFile{
+color:white;
+margin-top:15px;
+font-size:20px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- LOADER -->
-
-<div id="loader">
-LOADING...
-</div>
-
-<!-- LOGIN -->
+<!-- LOGIN PAGE -->
 
 <div id="loginPage">
 
-<div class="login-box">
-
-<h1 class="login-title">
+<h1 style="color:#ffbf00;font-size:50px;">
 GOWIND STUDY
 </h1>
 
 <input type="text"
 id="username"
-placeholder="Username"
-class="login-input">
+placeholder="Username">
 
 <input type="password"
 id="password"
-placeholder="Password"
-class="login-input">
+placeholder="Password">
 
-<br><br>
-
-<button onclick="login()"
-class="login-btn">
+<button onclick="login()">
 LOGIN
-</button>
-
-<p id="error"></p>
-
-</div>
-
-</div>
-
-<!-- TOPBAR -->
-
-<div class="topbar">
-
-<div class="menu-btn"
-onclick="openDrawer()">☰</div>
-
-<div class="title">
-Gowind Study
-</div>
-
-<button onclick="logout()"
-class="logout-btn">
-Logout
 </button>
 
 </div>
 
 <!-- DRAWER -->
 
-<div class="drawer"
-id="drawer">
+<div class="drawer" id="drawer">
+
+<div class="closeDrawer"
+onclick="closeDrawer()">
+×
+</div>
 
 <div class="drawer-header">
 
-<img src="./logo.png"
+<img src="logo.png"
 class="drawer-logo">
 
 <div class="drawer-title">
 GOWIND STUDY
 </div>
-
-<button class="close-btn"
-onclick="closeDrawer()">
-✕
-</button>
 
 </div>
 
@@ -432,17 +425,16 @@ CREATED BY GOWINDASAMY<br>
 ★ XII PERIMIUM GROUP
 </div>
 
-<div class="quote">
-📚 STUDY HARD • STAY HUMBLE
-</div>
-
-<div class="quote">
-🔥 SUCCESS NEEDS SACRIFICE
-</div>
-
-<div class="quote">
-🎯 DON’T STOP UNTIL YOU WIN
-</div>
+<div class="quote">📚 STUDY HARD • STAY HUMBLE</div>
+<div class="quote">🔥 SUCCESS NEEDS SACRIFICE</div>
+<div class="quote">🎯 DON’T STOP UNTIL YOU WIN</div>
+<div class="quote">⚡ EVERY DAY IS A NEW CHANCE</div>
+<div class="quote">📖 LEARN TODAY • LEAD TOMORROW</div>
+<div class="quote">💡 FOCUS ON YOUR GOAL</div>
+<div class="quote">🚀 DREAM BIG • WORK HARD</div>
+<div class="quote">🏆 NO PAIN • NO GAIN</div>
+<div class="quote">⏳ TIME IS VERY IMPORTANT</div>
+<div class="quote">🧠 KNOWLEDGE IS POWER</div>
 
 <div class="line"></div>
 
@@ -450,17 +442,9 @@ CREATED BY GOWINDASAMY<br>
 
 <p>GOWIND STUDY</p>
 
-<p>
-EDUCATION • DISCIPLINE • SUCCESS
-</p>
+<p>EDUCATION • DISCIPLINE • SUCCESS</p>
 
-<p>
-© 2026 ALL RIGHTS RESERVED
-</p>
-
-<p id="visitorCount">
-Visitors : 0
-</p>
+<p>© 2026 ALL RIGHTS RESERVED</p>
 
 </div>
 
@@ -468,18 +452,47 @@ Visitors : 0
 
 </div>
 
-<!-- MAIN -->
+<!-- OVERLAY -->
 
-<div class="main">
+<div class="overlay"
+id="overlay"
+onclick="closeDrawer()">
+</div>
 
-<input type="text"
-id="searchInput"
-placeholder="Search Subject..."
-onkeyup="searchSubjects()">
+<!-- MAIN PAGE -->
+
+<div class="main"
+id="mainPage">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<div class="leftTop">
+
+<div class="menu-btn"
+onclick="openDrawer()">
+☰
+</div>
+
+<div class="title">
+Gowind Study
+</div>
+
+</div>
+
+<button class="logoutBtn"
+onclick="logout()">
+Logout
+</button>
+
+</div>
+
+<!-- HEADER -->
 
 <div class="header">
 
-<img src="./logo.png"
+<img src="logo.png"
 class="logo">
 
 <div class="heading">
@@ -488,416 +501,278 @@ GOWIND STUDY
 
 </div>
 
-<!-- ADMIN -->
+<!-- ADMIN PANEL -->
 
-<div id="dashboard">
-
-<h2 style="
-color:#ffbf00;
-font-size:35px;
-">
-ADMIN DASHBOARD
-</h2>
-
-<select id="subjectSelect"
-style="
-width:80%;
-padding:15px;
-font-size:18px;
-border-radius:15px;
-margin-top:20px;
-">
-
-<option value="tamil">
-TAMIL
-</option>
-
-<option value="english">
-ENGLISH
-</option>
-
-<option value="maths">
-MATHS
-</option>
-
-<option value="physics">
-PHYSICS
-</option>
-
-<option value="chemistry">
-CHEMISTRY
-</option>
-
-<option value="cs">
-COMPUTER SCIENCE
-</option>
-
-</select>
-
-<br><br>
-
-<input type="text"
-id="customFileName"
-placeholder="Custom PDF Name"
-style="
-width:80%;
-padding:15px;
-border:none;
-border-radius:15px;
-font-size:18px;
-">
-
-<br><br>
+<div id="adminPanel">
 
 <input type="file"
-id="pdfUpload"
-accept="application/pdf"
-multiple
-onchange="showFileNames()">
+id="pdfFile"
+accept=".pdf"
+onchange="showFileName()">
 
-<br><br>
-
-<div id="selectedFiles"
-style="
-color:#00ccff;
-font-size:18px;
-">
+<div id="selectedFile">
 No file selected
 </div>
 
-<br>
+<input type="text"
+id="customName"
+placeholder="Custom PDF Name">
 
-<div id="uploadStatus"
-style="
-color:#ffbf00;
-font-size:20px;
-font-weight:bold;
-">
-</div>
+<select id="subjectSelect">
 
-<br>
+<option>TAMIL</option>
+<option>ENGLISH</option>
+<option>MATHS</option>
+<option>PHYSICS</option>
+<option>CHEMISTRY</option>
+<option>COMPUTER SCIENCE</option>
 
-<button onclick="uploadPDF()"
-class="login-btn">
+</select>
+
+<select id="stdSelect">
+
+<option>11TH</option>
+<option>12TH</option>
+
+</select>
+
+<button onclick="uploadPDF()">
 UPLOAD PDF
 </button>
 
+<div id="uploadStatus"></div>
+
 </div>
 
-<!-- SUBJECTS -->
+<!-- SUBJECT BUTTONS -->
 
 <div class="subject"
-onclick="openSubject('tamil')">
-📙 TAMIL
-</div>
-
-<div class="subject"
-onclick="openSubject('english')">
-📘 ENGLISH
+onclick="filterSubject('TAMIL')">
+☄ TAMIL
 </div>
 
 <div class="subject"
-onclick="openSubject('maths')">
-🧮 MATHS
+onclick="filterSubject('ENGLISH')">
+☄ ENGLISH
 </div>
 
 <div class="subject"
-onclick="openSubject('physics')">
-⚛ PHYSICS
+onclick="filterSubject('MATHS')">
+☄ MATHS
 </div>
 
 <div class="subject"
-onclick="openSubject('chemistry')">
-🧪 CHEMISTRY
+onclick="filterSubject('PHYSICS')">
+☄ PHYSICS
 </div>
 
 <div class="subject"
-onclick="openSubject('cs')">
-💻 COMPUTER SCIENCE
+onclick="filterSubject('CHEMISTRY')">
+☄ CHEMISTRY
 </div>
 
-<h2 id="pdfCount">
+<div class="subject"
+onclick="filterSubject('COMPUTER SCIENCE')">
+☄ COMPUTER SCIENCE
+</div>
+
+<!-- CLASS BUTTONS -->
+
+<div class="subject"
+onclick="filterStd('11TH')">
+📘 11TH PDFs
+</div>
+
+<div class="subject"
+onclick="filterStd('12TH')">
+📗 12TH PDFs
+</div>
+
+<div class="subject"
+onclick="loadPDFs()">
+📚 ALL PDFs
+</div>
+
+<!-- PDF COUNT -->
+
+<h1 id="pdfCount">
 PDFs : 0
-</h2>
+</h1>
 
-<div id="pdfContainer">
+<!-- PDFS -->
+
+<div id="pdfContainer"></div>
+
 </div>
 
-</div>
+<!-- FIREBASE -->
 
-<script>
+<script type="module">
 
-let currentSubject = "";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-/* LOADER */
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-window.onload = function(){
+/* FIREBASE */
 
-setTimeout(function(){
+const firebaseConfig = {
 
-document.getElementById(
-"loader"
-).style.display = "none";
+apiKey: "YOUR_NEW_API_KEY",
 
-},2000);
+authDomain: "gowind-study.firebaseapp.com",
+
+projectId: "gowind-study",
+
+storageBucket: "gowind-study.firebasestorage.app",
+
+messagingSenderId: "189466083841",
+
+appId: "1:189466083841:web:1a9802000bb91b15e33600"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+let currentUser = "";
+
+/* LOGIN */
+
+window.login = function(){
+
+let u =
+document.getElementById("username").value;
+
+let p =
+document.getElementById("password").value;
+
+if(
+(u.toLowerCase()=="user" && p=="123")
+||
+(u.toLowerCase()=="gsadmin" && p=="12+jee")
+){
+
+document.getElementById("loginPage")
+.style.display="none";
+
+document.getElementById("mainPage")
+.style.display="block";
+
+currentUser=u.toLowerCase();
+
+if(currentUser=="gsadmin"){
+
+document.getElementById("adminPanel")
+.style.display="block";
+
+}
+
+loadPDFs();
+
+}
+else{
+
+alert("Wrong Username or Password");
+
+}
+
+}
+
+/* LOGOUT */
+
+window.logout = function(){
+
+location.reload();
 
 }
 
 /* DRAWER */
 
-function openDrawer(){
+window.openDrawer = function(){
 
-document.getElementById(
-"drawer"
-).classList.add("active");
+document.getElementById("drawer")
+.classList.add("active");
 
-}
-
-function closeDrawer(){
-
-document.getElementById(
-"drawer"
-).classList.remove("active");
+document.getElementById("overlay")
+.classList.add("show");
 
 }
 
-/* LOGIN */
+window.closeDrawer = function(){
 
-function login(){
+document.getElementById("drawer")
+.classList.remove("active");
 
-var username =
-document.getElementById(
-"username"
-).value;
-
-var password =
-document.getElementById(
-"password"
-).value;
-
-if(
-(username=="user"
-|| username=="User")
-&& password=="123"
-){
-
-alert("User Login Success");
-
-document.getElementById(
-"loginPage"
-).style.display="none";
+document.getElementById("overlay")
+.classList.remove("show");
 
 }
 
-else if(
-(username=="gsadmin"
-|| username=="Gsadmin")
-&& password=="12+jee"
-){
+/* SHOW FILE NAME */
 
-alert("Admin Login Success");
+window.showFileName = function(){
 
-document.getElementById(
-"loginPage"
-).style.display="none";
+let file =
+document.getElementById("pdfFile").files[0];
 
-document.getElementById(
-"dashboard"
-).style.display="block";
+if(file){
 
-}
-
-else{
-
-document.getElementById(
-"error"
-).innerHTML =
-"Wrong Username or Password";
+document.getElementById("selectedFile")
+.innerHTML=
+"Selected : "+file.name;
 
 }
 
 }
 
-/* SUBJECT */
+/* UPLOAD PDF */
 
-function openSubject(subject){
+window.uploadPDF = async function(){
 
-currentSubject = subject;
+let file =
+document.getElementById("pdfFile").files[0];
 
-var container =
-document.getElementById(
-"pdfContainer"
-);
+let customName =
+document.getElementById("customName").value;
 
-container.innerHTML = "";
+let subject =
+document.getElementById("subjectSelect").value;
 
-var savedPDFs =
-JSON.parse(
-localStorage.getItem(subject)
-)
-|| [];
+let std =
+document.getElementById("stdSelect").value;
 
-document.getElementById(
-"pdfCount"
-).innerHTML =
-"PDFs : "
-+ savedPDFs.length;
+if(!file){
 
-savedPDFs.forEach(function(pdfURL){
-
-showPDF(pdfURL);
-
-});
-
-}
-
-/* SHOW PDF */
-
-function showPDF(pdfURL){
-
-var container =
-document.getElementById(
-"pdfContainer"
-);
-
-var card =
-document.createElement("div");
-
-card.className =
-"pdf-card";
-
-card.innerHTML =
-
-`
-
-<div style="font-size:80px;">
-📄
-</div>
-
-<h2 style="color:#ffbf00;">
-PDF READY
-</h2>
-
-<a href="${pdfURL}"
-target="_blank"
-class="openBtn">
-📖 OPEN PDF
-</a>
-
-<a href="${pdfURL}"
-target="_blank"
-download
-class="downloadBtn">
-⬇ DOWNLOAD PDF
-</a>
-
-`;
-
-container.appendChild(card);
-
-}
-
-/* SHOW FILE NAMES */
-
-function showFileNames(){
-
-var files =
-document.getElementById(
-"pdfUpload"
-).files;
-
-var text = "";
-
-for(var i=0;i<files.length;i++){
-
-text += "📄 "
-+ files[i].name
-+ "<br>";
-
-}
-
-if(text==""){
-
-text =
-"No file selected";
-
-}
-
-document.getElementById(
-"selectedFiles"
-).innerHTML =
-text;
-
-}
-
-/* UPLOAD */
-
-async function uploadPDF(){
-
-currentSubject =
-document.getElementById(
-"subjectSelect"
-).value;
-
-var files =
-document.getElementById(
-"pdfUpload"
-).files;
-
-var customName =
-document.getElementById(
-"customFileName"
-).value;
-
-if(files.length==0){
-
-alert("Select PDF");
+alert("Choose PDF");
 
 return;
 
 }
 
-document.getElementById(
-"uploadStatus"
-).innerHTML =
-"⏳ Uploading...";
+document.getElementById("uploadStatus")
+.innerHTML="Uploading...";
 
-for(var i=0;i<files.length;i++){
+let formData = new FormData();
 
-var file = files[i];
+formData.append("file", file);
 
-var finalName =
-customName;
+formData.append("upload_preset", "svzutvln");
 
-if(finalName==""){
+formData.append("resource_type", "auto");
 
-finalName =
-file.name;
+let res = await fetch(
 
-}
-
-var formData =
-new FormData();
-
-formData.append(
-"file",
-file
-);
-
-formData.append(
-"public_id",
-finalName
-);
-
-formData.append(
-"upload_preset",
-"svzutvln"
-);
-
-var response =
-await fetch(
-
-"https://api.cloudinary.com/v1_1/dcumfibjl/raw/upload",
+"https://api.cloudinary.com/v1_1/dcumfibjl/auto/upload",
 
 {
 method:"POST",
@@ -906,119 +781,173 @@ body:formData
 
 );
 
-var data =
-await response.json();
+let data = await res.json();
 
-var pdfURL =
-data.secure_url;
+await addDoc(collection(db,"pdfs"),{
 
-var savedPDFs =
-JSON.parse(
-localStorage.getItem(
-currentSubject
-)
-)
-|| [];
+name: customName || file.name,
 
-savedPDFs.push(pdfURL);
+url: data.secure_url,
 
-localStorage.setItem(
-currentSubject,
-JSON.stringify(
-savedPDFs
-)
-);
+subject: subject,
 
-showPDF(pdfURL);
+std: std
+
+});
+
+document.getElementById("uploadStatus")
+.innerHTML="Upload Success";
+
+loadPDFs();
 
 }
 
-document.getElementById(
-"uploadStatus"
-).innerHTML =
-"✅ Upload Complete";
+/* LOAD PDFs */
 
-openSubject(
-currentSubject
-);
+window.loadPDFs = async function(){
 
-alert(
-"PDF Uploaded Successfully"
-);
+let pdfContainer =
+document.getElementById("pdfContainer");
 
-}
+pdfContainer.innerHTML="";
 
-/* SEARCH */
+let snap =
+await getDocs(collection(db,"pdfs"));
 
-function searchSubjects(){
+let count=0;
 
-var input =
-document.getElementById(
-"searchInput"
-).value.toLowerCase();
+snap.forEach((docu)=>{
 
-var subjects =
-document.getElementsByClassName(
-"subject"
-);
-
-for(var i=0;i<subjects.length;i++){
-
-if(
-subjects[i]
-.innerHTML
-.toLowerCase()
-.includes(input)
-){
-
-subjects[i]
-.style.display =
-"block";
-
-}
-
-else{
-
-subjects[i]
-.style.display =
-"none";
-
-}
-
-}
-
-}
-
-/* LOGOUT */
-
-function logout(){
-
-location.reload();
-
-}
-
-/* VISITOR */
-
-var count =
-localStorage.getItem(
-"visitors"
-)
-|| 0;
+let data = docu.data();
 
 count++;
 
-localStorage.setItem(
-"visitors",
-count
-);
+pdfContainer.innerHTML += `
 
-document.getElementById(
-"visitorCount"
-).innerHTML =
-"Visitors : "
-+ count;
+<div class="pdfCard">
+
+<div class="pdfName">
+${data.name}
+</div>
+
+<div class="pdfSubject">
+📘 ${data.subject}
+</div>
+
+<div class="pdfStd">
+🎓 ${data.std}
+</div>
+
+<a href="${data.url}"
+target="_blank">
+
+<button class="openBtn">
+OPEN PDF
+</button>
+
+</a>
+
+<a href="${data.url}"
+download>
+
+<button class="downloadBtn">
+DOWNLOAD PDF
+</button>
+
+</a>
+
+${
+currentUser=="gsadmin"
+?
+
+`<button class="deleteBtn"
+onclick="deletePDF('${docu.id}')">
+DELETE PDF
+</button>`
+
+:
+
+""
+
+}
+
+</div>
+
+`;
+
+});
+
+document.getElementById("pdfCount")
+.innerHTML=
+"PDFs : "+count;
+
+}
+
+/* DELETE PDF */
+
+window.deletePDF = async function(id){
+
+await deleteDoc(doc(db,"pdfs",id));
+
+loadPDFs();
+
+}
+
+/* SUBJECT FILTER */
+
+window.filterSubject = function(sub){
+
+let cards =
+document.getElementsByClassName("pdfCard");
+
+for(let i=0;i<cards.length;i++){
+
+if(
+cards[i].innerHTML
+.toLowerCase()
+.includes(sub.toLowerCase())
+){
+
+cards[i].style.display="block";
+
+}
+else{
+
+cards[i].style.display="none";
+
+}
+
+}
+
+}
+
+/* STD FILTER */
+
+window.filterStd = function(std){
+
+let cards =
+document.getElementsByClassName("pdfCard");
+
+for(let i=0;i<cards.length;i++){
+
+if(
+cards[i].innerHTML.includes(std)
+){
+
+cards[i].style.display="block";
+
+}
+else{
+
+cards[i].style.display="none";
+
+}
+
+}
+
+}
 
 </script>
 
 </body>
-    </html>
+</html>
