@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Gowind Study</title>
 
@@ -180,18 +181,107 @@ body{
     display:block;
 }
 
+/* LOGIN PAGE */
+
+#loginPage{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    top:0;
+    left:0;
+    z-index:5000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-box{
+    width:85%;
+    background:#111;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.login-title{
+    color:#ffbf00;
+    font-size:35px;
+}
+
+.login-input{
+    width:90%;
+    padding:15px;
+    margin-top:20px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
+
+.login-btn{
+    background:#ffbf00;
+    color:black;
+    padding:15px 40px;
+    border:none;
+    border-radius:50px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#error{
+    color:red;
+    margin-top:15px;
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+
+<div class="login-box">
+
+<h1 class="login-title">
+GOWIND STUDY
+</h1>
+
+<input type="text"
+id="username"
+placeholder="Username"
+class="login-input">
+
+<input type="password"
+id="password"
+placeholder="Password"
+class="login-input">
+
+<br><br>
+
+<button onclick="login()"
+class="login-btn">
+LOGIN
+</button>
+
+<p id="error"></p>
+
+</div>
+
+</div>
+
 <!-- TOPBAR -->
 
 <div class="topbar">
 
-<div class="menu-btn" onclick="openDrawer()">☰</div>
+<div class="menu-btn"
+onclick="openDrawer()">☰</div>
 
-<div class="title">Gowind Study</div>
+<div class="title">
+Gowind Study
+</div>
 
 </div>
 
@@ -201,7 +291,8 @@ body{
 
 <div class="drawer-header">
 
-<img src="logo.png" class="drawer-logo">
+<img src="logo.png"
+class="drawer-logo">
 
 <div class="drawer-title">
 GOWIND STUDY
@@ -214,28 +305,80 @@ CREATED BY GOWINDASAMY<br>
 ★ XII PERIMIUM GROUP
 </div>
 
-<div class="quote">📚 STUDY HARD • STAY HUMBLE</div>
-<div class="quote">🔥 SUCCESS NEEDS SACRIFICE</div>
-<div class="quote">🎯 DON’T STOP UNTIL YOU WIN</div>
-<div class="quote">⚡ EVERY DAY IS A NEW CHANCE</div>
-<div class="quote">📖 LEARN TODAY • LEAD TOMORROW</div>
-<div class="quote">💡 FOCUS ON YOUR GOAL</div>
-<div class="quote">🚀 DREAM BIG • WORK HARD</div>
-<div class="quote">🏆 NO PAIN • NO GAIN</div>
-<div class="quote">⏳ TIME IS VERY IMPORTANT</div>
-<div class="quote">🧠 KNOWLEDGE IS POWER</div>
-<div class="quote">🔥 CONSISTENCY IS THE KEY</div>
-<div class="quote">📘 STUDY NOW • ENJOY LATER</div>
-<div class="quote">🎯 YOUR FUTURE IS CREATED TODAY</div>
-<div class="quote">⚡ BELIEVE IN YOURSELF</div>
-<div class="quote">🏅 NEVER GIVE UP</div>
+<div class="quote">
+📚 STUDY HARD • STAY HUMBLE
+</div>
+
+<div class="quote">
+🔥 SUCCESS NEEDS SACRIFICE
+</div>
+
+<div class="quote">
+🎯 DON’T STOP UNTIL YOU WIN
+</div>
+
+<div class="quote">
+⚡ EVERY DAY IS A NEW CHANCE
+</div>
+
+<div class="quote">
+📖 LEARN TODAY • LEAD TOMORROW
+</div>
+
+<div class="quote">
+💡 FOCUS ON YOUR GOAL
+</div>
+
+<div class="quote">
+🚀 DREAM BIG • WORK HARD
+</div>
+
+<div class="quote">
+🏆 NO PAIN • NO GAIN
+</div>
+
+<div class="quote">
+⏳ TIME IS VERY IMPORTANT
+</div>
+
+<div class="quote">
+🧠 KNOWLEDGE IS POWER
+</div>
+
+<div class="quote">
+🔥 CONSISTENCY IS THE KEY
+</div>
+
+<div class="quote">
+📘 STUDY NOW • ENJOY LATER
+</div>
+
+<div class="quote">
+🎯 YOUR FUTURE IS CREATED TODAY
+</div>
+
+<div class="quote">
+⚡ BELIEVE IN YOURSELF
+</div>
+
+<div class="quote">
+🏅 NEVER GIVE UP
+</div>
 
 <div class="line"></div>
 
 <div class="footer">
+
 <p>GOWIND STUDY</p>
-<p>EDUCATION • DISCIPLINE • SUCCESS</p>
-<p>© 2026 ALL RIGHTS RESERVED</p>
+
+<p>
+EDUCATION • DISCIPLINE • SUCCESS
+</p>
+
+<p>
+© 2026 ALL RIGHTS RESERVED
+</p>
+
 </div>
 
 <div class="line"></div>
@@ -244,7 +387,10 @@ CREATED BY GOWINDASAMY<br>
 
 <!-- OVERLAY -->
 
-<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="overlay"
+id="overlay"
+onclick="closeDrawer()">
+</div>
 
 <!-- MAIN -->
 
@@ -252,7 +398,8 @@ CREATED BY GOWINDASAMY<br>
 
 <div class="header">
 
-<img src="logo.png" class="logo">
+<img src="logo.png"
+class="logo">
 
 <div class="heading">
 GOWIND STUDY
@@ -260,30 +407,90 @@ GOWIND STUDY
 
 </div>
 
-<div class="subject">☄ TAMIL</div>
+<div class="subject">
+☄ TAMIL
+</div>
 
-<div class="subject">☄ ENGLISH</div>
+<div class="subject">
+☄ ENGLISH
+</div>
 
-<div class="subject">☄ MATHS</div>
+<div class="subject">
+☄ MATHS
+</div>
 
-<div class="subject">☄ PHYSICS</div>
+<div class="subject">
+☄ PHYSICS
+</div>
 
-<div class="subject">☄ CHEMISTRY</div>
+<div class="subject">
+☄ CHEMISTRY
+</div>
 
-<div class="subject">☄ COMPUTER SCIENCE</div>
+<div class="subject">
+☄ COMPUTER SCIENCE
+</div>
 
 </div>
 
 <script>
 
 function openDrawer(){
-    document.getElementById("drawer").classList.add("active");
-    document.getElementById("overlay").classList.add("show");
+
+    document.getElementById("drawer")
+    .classList.add("active");
+
+    document.getElementById("overlay")
+    .classList.add("show");
 }
 
 function closeDrawer(){
-    document.getElementById("drawer").classList.remove("active");
-    document.getElementById("overlay").classList.remove("show");
+
+    document.getElementById("drawer")
+    .classList.remove("active");
+
+    document.getElementById("overlay")
+    .classList.remove("show");
+}
+
+/* LOGIN SYSTEM */
+
+function login(){
+
+    var username =
+    document.getElementById("username").value;
+
+    var password =
+    document.getElementById("password").value;
+
+    /* USER LOGIN */
+
+    if(username=="gsuser"
+    && password=="user123"){
+
+        alert("User Login Success");
+
+        document.getElementById("loginPage")
+        .style.display="none";
+    }
+
+    /* ADMIN LOGIN */
+
+    else if(username=="gsadmin"
+    && password=="12+jee"){
+
+        alert("Admin Login Success");
+
+        document.getElementById("loginPage")
+        .style.display="none";
+    }
+
+    else{
+
+        document.getElementById("error")
+        .innerHTML =
+        "Wrong Username or Password";
+    }
 }
 
 </script>
