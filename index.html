@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gowind Study</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:black;
+}
+
+/* TOPBAR */
+
+.topbar{
+    width:100%;
+    background:#6d4dbf;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+}
+
+.menu-btn{
+    font-size:35px;
+    cursor:pointer;
+    color:black;
+}
+
+.title{
+    font-size:28px;
+    margin-left:20px;
+    color:black;
+}
+
+/* DRAWER */
+
+.drawer{
+    width:78%;
+    height:100%;
+    background:#050505;
+    position:fixed;
+    top:0;
+    left:-100%;
+    transition:0.4s;
+    z-index:2000;
+    overflow:auto;
+    box-shadow:5px 0px 15px black;
+}
+
+.drawer.active{
+    left:0;
+}
+
+/* DRAWER HEADER */
+
+.drawer-header{
+    background:#111;
+    padding:20px;
+    display:flex;
+    align-items:center;
+}
+
+.drawer-logo{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    margin-right:20px;
+}
+
+.drawer-title{
+    color:#ffbf00;
+    font-size:32px;
+    font-weight:bold;
+}
+
+/* CREATED BOX */
+
+.creator-box{
+    margin:15px;
+    background:#0d0d0d;
+    padding:18px;
+    text-align:center;
+    color:#008cff;
+    font-size:20px;
+    font-weight:bold;
+    border:2px solid #111;
+}
+
+/* QUOTES */
+
+.quote{
+    color:#00bfff;
+    font-size:18px;
+    padding:12px 20px;
+}
+
+/* FOOTER */
+
+.footer{
+    color:gray;
+    padding:25px;
+    font-style:italic;
+    font-size:18px;
+}
+
+.line{
+    height:2px;
+    background:gray;
+    margin:15px;
+}
+
+/* MAIN CONTENT */
+
+.main{
+    padding-top:120px;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.logo{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    margin-right:20px;
+}
+
+.heading{
+    color:#ffbf00;
+    font-size:38px;
+    font-weight:bold;
+}
+
+/* SUBJECT BUTTONS */
+
+.subject{
+    width:82%;
+    background:#ffbf00;
+    margin:30px auto;
+    padding:22px;
+    border-radius:50px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.subject:hover{
+    background:white;
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    top:0;
+    left:0;
+    display:none;
+    z-index:1500;
+}
+
+.overlay.show{
+    display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<div class="menu-btn" onclick="openDrawer()">☰</div>
+
+<div class="title">Gowind Study</div>
+
+</div>
+
+<!-- DRAWER -->
+
+<div class="drawer" id="drawer">
+
+<div class="drawer-header">
+
+<img src="logo.png" class="drawer-logo">
+
+<div class="drawer-title">
+GOWIND STUDY
+</div>
+
+</div>
+
+<div class="creator-box">
+CREATED BY GOWINDASAMY<br>
+★ XII PERIMIUM GROUP
+</div>
+
+<div class="quote">📚 STUDY HARD • STAY HUMBLE</div>
+<div class="quote">🔥 SUCCESS NEEDS SACRIFICE</div>
+<div class="quote">🎯 DON’T STOP UNTIL YOU WIN</div>
+<div class="quote">⚡ EVERY DAY IS A NEW CHANCE</div>
+<div class="quote">📖 LEARN TODAY • LEAD TOMORROW</div>
+<div class="quote">💡 FOCUS ON YOUR GOAL</div>
+<div class="quote">🚀 DREAM BIG • WORK HARD</div>
+<div class="quote">🏆 NO PAIN • NO GAIN</div>
+<div class="quote">⏳ TIME IS VERY IMPORTANT</div>
+<div class="quote">🧠 KNOWLEDGE IS POWER</div>
+<div class="quote">🔥 CONSISTENCY IS THE KEY</div>
+<div class="quote">📘 STUDY NOW • ENJOY LATER</div>
+<div class="quote">🎯 YOUR FUTURE IS CREATED TODAY</div>
+<div class="quote">⚡ BELIEVE IN YOURSELF</div>
+<div class="quote">🏅 NEVER GIVE UP</div>
+
+<div class="line"></div>
+
+<div class="footer">
+<p>GOWIND STUDY</p>
+<p>EDUCATION • DISCIPLINE • SUCCESS</p>
+<p>© 2026 ALL RIGHTS RESERVED</p>
+</div>
+
+<div class="line"></div>
+
+</div>
+
+<!-- OVERLAY -->
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="header">
+
+<img src="logo.png" class="logo">
+
+<div class="heading">
+GOWIND STUDY
+</div>
+
+</div>
+
+<div class="subject">☄ TAMIL</div>
+
+<div class="subject">☄ ENGLISH</div>
+
+<div class="subject">☄ MATHS</div>
+
+<div class="subject">☄ PHYSICS</div>
+
+<div class="subject">☄ CHEMISTRY</div>
+
+<div class="subject">☄ COMPUTER SCIENCE</div>
+
+</div>
+
+<script>
+
+function openDrawer(){
+    document.getElementById("drawer").classList.add("active");
+    document.getElementById("overlay").classList.add("show");
+}
+
+function closeDrawer(){
+    document.getElementById("drawer").classList.remove("active");
+    document.getElementById("overlay").classList.remove("show");
+}
+
+</script>
+
+</body>
+</html>
