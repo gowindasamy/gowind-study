@@ -15,6 +15,21 @@ body{
     background:black;
 }
 
+/* LOADER */
+
+#loader{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#ffbf00;
+    font-size:40px;
+}
+
 /* TOPBAR */
 
 .topbar{
@@ -59,8 +74,6 @@ body{
     left:0;
 }
 
-/* DRAWER HEADER */
-
 .drawer-header{
     background:#111;
     padding:20px;
@@ -83,8 +96,6 @@ body{
     font-weight:bold;
 }
 
-/* CLOSE BUTTON */
-
 .close-btn{
     position:absolute;
     right:20px;
@@ -94,43 +105,7 @@ body{
     cursor:pointer;
 }
 
-/* CREATED BOX */
-
-.creator-box{
-    margin:15px;
-    background:#0d0d0d;
-    padding:18px;
-    text-align:center;
-    color:#008cff;
-    font-size:20px;
-    font-weight:bold;
-    border:2px solid #111;
-}
-
-/* QUOTES */
-
-.quote{
-    color:#00bfff;
-    font-size:18px;
-    padding:12px 20px;
-}
-
-/* FOOTER */
-
-.footer{
-    color:gray;
-    padding:25px;
-    font-style:italic;
-    font-size:18px;
-}
-
-.line{
-    height:2px;
-    background:gray;
-    margin:15px;
-}
-
-/* MAIN CONTENT */
+/* MAIN */
 
 .main{
     padding-top:120px;
@@ -161,33 +136,28 @@ body{
 
 @keyframes rainbow{
 
-0%{
-color:red;
-}
-
-20%{
-color:orange;
-}
-
-40%{
-color:yellow;
-}
-
-60%{
-color:lime;
-}
-
-80%{
-color:cyan;
-}
-
-100%{
-color:#ff00ff;
-}
+0%{color:red;}
+20%{color:orange;}
+40%{color:yellow;}
+60%{color:lime;}
+80%{color:cyan;}
+100%{color:#ff00ff;}
 
 }
 
-/* SUBJECT BUTTONS */
+/* SEARCH */
+
+#searchInput{
+    width:80%;
+    padding:15px;
+    display:block;
+    margin:auto;
+    border-radius:30px;
+    border:none;
+    font-size:18px;
+}
+
+/* SUBJECTS */
 
 .subject{
     width:78%;
@@ -209,50 +179,16 @@ color:#ff00ff;
 
 @keyframes rainbowBg{
 
-0%{
-background:#ff0000;
-}
-
-20%{
-background:#ff9900;
-}
-
-40%{
-background:#ffee00;
-}
-
-60%{
-background:#00ff00;
-}
-
-80%{
-background:#00ccff;
-}
-
-100%{
-background:#ff00ff;
-}
+0%{background:#ff0000;}
+20%{background:#ff9900;}
+40%{background:#ffee00;}
+60%{background:#00ff00;}
+80%{background:#00ccff;}
+100%{background:#ff00ff;}
 
 }
 
-/* OVERLAY */
-
-.overlay{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.5);
-    top:0;
-    left:0;
-    display:none;
-    z-index:1500;
-}
-
-.overlay.show{
-    display:block;
-}
-
-/* LOGIN PAGE */
+/* LOGIN */
 
 #loginPage{
     position:fixed;
@@ -305,10 +241,66 @@ background:#ff00ff;
     margin-top:15px;
 }
 
+/* DASHBOARD */
+
+#dashboard{
+    display:none;
+    padding:20px;
+    text-align:center;
+}
+
+#pdfContainer{
+    width:95%;
+    margin:auto;
+    margin-top:30px;
+}
+
+#pdfCount{
+    color:#ffbf00;
+    text-align:center;
+}
+
+.creator-box{
+    margin:15px;
+    background:#0d0d0d;
+    padding:18px;
+    text-align:center;
+    color:#008cff;
+    font-size:20px;
+    font-weight:bold;
+    border:2px solid #111;
+}
+
+.quote{
+    color:#00bfff;
+    font-size:18px;
+    padding:12px 20px;
+}
+
+.footer{
+    color:gray;
+    padding:25px;
+    font-style:italic;
+    font-size:18px;
+    text-align:center;
+}
+
+.line{
+    height:2px;
+    background:gray;
+    margin:15px;
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- LOADER -->
+
+<div id="loader">
+LOADING...
+</div>
 
 <!-- LOGIN PAGE -->
 
@@ -337,7 +329,57 @@ class="login-btn">
 LOGIN
 </button>
 
+<br><br>
+
+<button onclick="showSignup()"
+class="login-btn">
+SIGN UP
+</button>
+
 <p id="error"></p>
+
+</div>
+
+</div>
+
+<!-- SIGNUP PAGE -->
+
+<div id="signupPage"
+style="
+display:none;
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+top:0;
+left:0;
+z-index:6000;
+justify-content:center;
+align-items:center;
+">
+
+<div class="login-box">
+
+<h1 class="login-title">
+USER SIGNUP
+</h1>
+
+<input type="text"
+id="newUser"
+placeholder="New Username"
+class="login-input">
+
+<input type="password"
+id="newPass"
+placeholder="New Password"
+class="login-input">
+
+<br><br>
+
+<button onclick="signup()"
+class="login-btn">
+CREATE ACCOUNT
+</button>
 
 </div>
 
@@ -353,6 +395,20 @@ onclick="openDrawer()">☰</div>
 <div class="title">
 Gowind Study
 </div>
+
+<button onclick="logout()"
+style="
+margin-left:auto;
+background:red;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+">
+Logout
+</button>
 
 </div>
 
@@ -379,65 +435,9 @@ CREATED BY GOWINDASAMY<br>
 ★ XII PERIMIUM GROUP
 </div>
 
-<div class="quote">
-📚 STUDY HARD • STAY HUMBLE
-</div>
-
-<div class="quote">
-🔥 SUCCESS NEEDS SACRIFICE
-</div>
-
-<div class="quote">
-🎯 DON’T STOP UNTIL YOU WIN
-</div>
-
-<div class="quote">
-⚡ EVERY DAY IS A NEW CHANCE
-</div>
-
-<div class="quote">
-📖 LEARN TODAY • LEAD TOMORROW
-</div>
-
-<div class="quote">
-💡 FOCUS ON YOUR GOAL
-</div>
-
-<div class="quote">
-🚀 DREAM BIG • WORK HARD
-</div>
-
-<div class="quote">
-🏆 NO PAIN • NO GAIN
-</div>
-
-<div class="quote">
-⏳ TIME IS VERY IMPORTANT
-</div>
-
-<div class="quote">
-🧠 KNOWLEDGE IS POWER
-</div>
-
-<div class="quote">
-🔥 CONSISTENCY IS THE KEY
-</div>
-
-<div class="quote">
-📘 STUDY NOW • ENJOY LATER
-</div>
-
-<div class="quote">
-🎯 YOUR FUTURE IS CREATED TODAY
-</div>
-
-<div class="quote">
-⚡ BELIEVE IN YOURSELF
-</div>
-
-<div class="quote">
-🏅 NEVER GIVE UP
-</div>
+<div class="quote">📚 STUDY HARD • STAY HUMBLE</div>
+<div class="quote">🔥 SUCCESS NEEDS SACRIFICE</div>
+<div class="quote">🎯 DON’T STOP UNTIL YOU WIN</div>
 
 <div class="line"></div>
 
@@ -453,22 +453,44 @@ EDUCATION • DISCIPLINE • SUCCESS
 © 2026 ALL RIGHTS RESERVED
 </p>
 
+<p id="visitorCount">
+Visitors : 0
+</p>
+
+<textarea
+id="feedback"
+placeholder="Send Feedback..."
+style="
+width:90%;
+height:100px;
+margin:20px;
+border-radius:20px;
+padding:15px;
+font-size:18px;
+">
+</textarea>
+
+<br>
+
+<button onclick="sendFeedback()"
+class="login-btn">
+SEND FEEDBACK
+</button>
+
 </div>
 
 <div class="line"></div>
 
 </div>
 
-<!-- OVERLAY -->
-
-<div class="overlay"
-id="overlay"
-onclick="closeDrawer()">
-</div>
-
 <!-- MAIN -->
 
 <div class="main">
+
+<input type="text"
+id="searchInput"
+placeholder="Search Subject..."
+onkeyup="searchSubjects()">
 
 <div class="header">
 
@@ -481,95 +503,359 @@ GOWIND STUDY
 
 </div>
 
-<div class="subject">
-☄ TAMIL
+<!-- ADMIN DASHBOARD -->
+
+<div id="dashboard">
+
+<h2 style="
+color:#ffbf00;
+font-size:35px;
+">
+ADMIN DASHBOARD
+</h2>
+
+<select id="subjectSelect"
+style="
+width:80%;
+padding:15px;
+font-size:18px;
+border-radius:15px;
+margin-top:20px;
+">
+
+<option value="tamil">TAMIL</option>
+<option value="english">ENGLISH</option>
+<option value="maths">MATHS</option>
+<option value="physics">PHYSICS</option>
+<option value="chemistry">CHEMISTRY</option>
+<option value="cs">COMPUTER SCIENCE</option>
+
+</select>
+
+<br><br>
+
+<input type="file"
+id="pdfUpload"
+accept="application/pdf"
+multiple>
+
+<br><br>
+
+<button onclick="uploadPDF()"
+class="login-btn">
+UPLOAD PDF
+</button>
+
 </div>
 
-<div class="subject">
-☄ ENGLISH
+<div class="subject"
+onclick="openSubject('11th')">
+📘 11TH STANDARD
 </div>
 
-<div class="subject">
-☄ MATHS
+<div class="subject"
+onclick="openSubject('12th')">
+📗 12TH STANDARD
 </div>
 
-<div class="subject">
-☄ PHYSICS
+<div class="subject"
+onclick="openSubject('tamil')">
+📙 TAMIL
 </div>
 
-<div class="subject">
-☄ CHEMISTRY
+<div class="subject"
+onclick="openSubject('english')">
+📘 ENGLISH
 </div>
 
-<div class="subject">
-☄ COMPUTER SCIENCE
+<div class="subject"
+onclick="openSubject('maths')">
+🧮 MATHS
+</div>
+
+<div class="subject"
+onclick="openSubject('physics')">
+⚛ PHYSICS
+</div>
+
+<div class="subject"
+onclick="openSubject('chemistry')">
+🧪 CHEMISTRY
+</div>
+
+<div class="subject"
+onclick="openSubject('cs')">
+💻 COMPUTER SCIENCE
+</div>
+
+<h2 id="pdfCount">
+PDFs : 0
+</h2>
+
+<div id="pdfContainer">
 </div>
 
 </div>
 
-<script>
+<!-- WHATSAPP -->
 
-function openDrawer(){
+<a href="https://wa.me/"
+target="_blank"
+style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:30px;
+text-decoration:none;
+z-index:9999;
+">
+☎
+</a>
 
-    document.getElementById("drawer")
-    .classList.add("active");
+<!-- AI BUTTON -->
 
-    document.getElementById("overlay")
-    .classList.add("show");
+<button onclick="openAI()"
+style="
+position:fixed;
+bottom:90px;
+right:20px;
+background:#ffbf00;
+border:none;
+padding:15px;
+border-radius:50%;
+font-size:25px;
+cursor:pointer;
+z-index:9999;
+">
+🤖
+</button>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyA25iPenWBkuqzCXSJiCVOirRx8dnf_I2Y",
+
+authDomain: "gowind-study.firebaseapp.com",
+
+projectId: "gowind-study",
+
+storageBucket: "gowind-study.firebasestorage.app",
+
+messagingSenderId: "189466083841",
+
+appId: "1:189466083841:web:1a9802000bb91b15e33600",
+
+measurementId: "G-Y21EXK3Z2P"
+
+};
+
+initializeApp(firebaseConfig);
+
+window.onload = function(){
+
+setTimeout(function(){
+
+document.getElementById("loader")
+.style.display = "none";
+
+},2000);
+
 }
 
-function closeDrawer(){
+/* DRAWER */
 
-    document.getElementById("drawer")
-    .classList.remove("active");
+window.openDrawer = function(){
 
-    document.getElementById("overlay")
-    .classList.remove("show");
+document.getElementById("drawer")
+.classList.add("active");
+
 }
 
-/* LOGIN SYSTEM */
+window.closeDrawer = function(){
 
-function login(){
+document.getElementById("drawer")
+.classList.remove("active");
 
-    var username =
-    document.getElementById("username").value;
-
-    var password =
-    document.getElementById("password").value;
-
-    /* USER LOGIN */
-
-    if((username=="user"
-    || username=="User")
-    && password=="123"){
-
-        alert("User Login Success");
-
-        document.getElementById("loginPage")
-        .style.display="none";
-    }
-
-    /* ADMIN LOGIN */
-
-    else if((username=="gsadmin"
-    || username=="Gsadmin")
-    && password=="12+jee"){
-
-        alert("Admin Login Success");
-
-        document.getElementById("loginPage")
-        .style.display="none";
-    }
-
-    else{
-
-        document.getElementById("error")
-        .innerHTML =
-        "Wrong Username or Password";
-    }
 }
+
+/* LOGIN */
+
+window.login = function(){
+
+var username =
+document.getElementById("username").value;
+
+var password =
+document.getElementById("password").value;
+
+if((username=="user"
+|| username=="User")
+&& password=="123"){
+
+alert("User Login Success");
+
+document.getElementById("loginPage")
+.style.display="none";
+
+}
+
+else if((username=="gsadmin"
+|| username=="Gsadmin")
+&& password=="12+jee"){
+
+alert("Admin Login Success");
+
+document.getElementById("loginPage")
+.style.display="none";
+
+document.getElementById("dashboard")
+.style.display="block";
+
+}
+
+else{
+
+document.getElementById("error")
+.innerHTML =
+"Wrong Username or Password";
+
+}
+
+}
+
+/* SIGNUP */
+
+window.showSignup = function(){
+
+document.getElementById("signupPage")
+.style.display="flex";
+
+}
+
+window.signup = function(){
+
+var user =
+document.getElementById("newUser").value;
+
+var pass =
+document.getElementById("newPass").value;
+
+localStorage.setItem("user",user);
+
+localStorage.setItem("pass",pass);
+
+alert("Signup Success");
+
+document.getElementById("signupPage")
+.style.display="none";
+
+}
+
+/* SUBJECT */
+
+window.openSubject = function(subject){
+
+document.getElementById("pdfContainer")
+.innerHTML = "";
+
+document.getElementById("pdfCount")
+.innerHTML = "PDFs : 0";
+
+}
+
+/* UPLOAD */
+
+window.uploadPDF = async function(){
+
+alert("Cloudinary Upload Ready");
+
+}
+
+/* SEARCH */
+
+window.searchSubjects = function(){
+
+var input =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+var subjects =
+document.getElementsByClassName("subject");
+
+for(var i=0;i<subjects.length;i++){
+
+if(subjects[i].innerHTML
+.toLowerCase().includes(input)){
+
+subjects[i].style.display =
+"block";
+
+}
+
+else{
+
+subjects[i].style.display =
+"none";
+
+}
+
+}
+
+}
+
+/* FEEDBACK */
+
+window.sendFeedback = function(){
+
+alert("Feedback Sent");
+
+}
+
+/* AI */
+
+window.openAI = function(){
+
+window.open(
+"https://chat.openai.com",
+"_blank"
+);
+
+}
+
+/* LOGOUT */
+
+window.logout = function(){
+
+location.reload();
+
+}
+
+/* VISITOR COUNT */
+
+var count =
+localStorage.getItem("visitors")
+|| 0;
+
+count++;
+
+localStorage.setItem(
+"visitors",
+count
+);
+
+document.getElementById("visitorCount")
+.innerHTML =
+"Visitors : " + count;
 
 </script>
 
 </body>
-</html>
+    </html>
