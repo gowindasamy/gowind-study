@@ -487,14 +487,6 @@ border-radius:15px;
 margin-top:20px;
 ">
 
-<option value="11th">
-11TH STANDARD
-</option>
-
-<option value="12th">
-12TH STANDARD
-</option>
-
 <option value="tamil">
 TAMIL
 </option>
@@ -523,12 +515,47 @@ COMPUTER SCIENCE
 
 <br><br>
 
+<input type="text"
+id="customFileName"
+placeholder="Custom PDF Name"
+style="
+width:80%;
+padding:15px;
+border:none;
+border-radius:15px;
+font-size:18px;
+">
+
+<br><br>
+
 <input type="file"
 id="pdfUpload"
 accept="application/pdf"
-multiple>
+multiple
+onchange="showFileNames()">
 
 <br><br>
+
+<div id="selectedFiles"
+style="
+color:#00ccff;
+font-size:18px;
+margin-top:10px;
+">
+No file selected
+</div>
+
+<br>
+
+<div id="uploadStatus"
+style="
+color:#ffbf00;
+font-size:20px;
+font-weight:bold;
+">
+</div>
+
+<br>
 
 <button onclick="uploadPDF()"
 class="login-btn">
@@ -538,21 +565,6 @@ UPLOAD PDF
 </div>
 
 <!-- SUBJECTS -->
-
-<div class="subject"
-onclick="openSubject('all')">
-📚 ALL PDFs
-</div>
-
-<div class="subject"
-onclick="openSubject('11th')">
-📘 11TH STANDARD
-</div>
-
-<div class="subject"
-onclick="openSubject('12th')">
-📗 12TH STANDARD
-</div>
 
 <div class="subject"
 onclick="openSubject('tamil')">
@@ -682,68 +694,21 @@ document.getElementById("pdfContainer");
 
 container.innerHTML = "";
 
-var totalCount = 0;
-
-/* ALL PDFs */
-
-if(subject=="all"){
-
-var subjects = [
-
-"11th",
-"12th",
-"tamil",
-"english",
-"maths",
-"physics",
-"chemistry",
-"cs"
-
-];
-
-subjects.forEach(function(sub){
-
-var savedPDFs =
-JSON.parse(
-localStorage.getItem(sub)
-)
-|| [];
-
-totalCount += savedPDFs.length;
-
-savedPDFs.forEach(function(pdfURL){
-
-showPDF(pdfURL);
-
-});
-
-});
-
-}
-
-/* SINGLE SUBJECT */
-
-else{
-
 var savedPDFs =
 JSON.parse(
 localStorage.getItem(subject)
 )
 || [];
 
-totalCount = savedPDFs.length;
+document.getElementById("pdfCount")
+.innerHTML =
+"PDFs : " + savedPDFs.length;
 
 savedPDFs.forEach(function(pdfURL){
 
 showPDF(pdfURL);
 
 });
-
-}
-
-document.getElementById("pdfCount")
-.innerHTML =
-"PDFs : " + totalCount;
 
 }
 
@@ -757,7 +722,9 @@ document.getElementById("pdfContainer");
 var iframe =
 document.createElement("iframe");
 
-iframe.src = pdfURL;
+iframe.src =
+"https://docs.google.com/gview?embedded=1&url="
++ encodeURIComponent(pdfURL);
 
 iframe.style.width = "100%";
 
@@ -799,6 +766,36 @@ container.appendChild(downloadBtn);
 
 }
 
+/* SHOW FILE NAMES */
+
+function showFileNames(){
+
+var files =
+document.getElementById("pdfUpload")
+.files;
+
+var text = "";
+
+for(var i=0;i<files.length;i++){
+
+text += "📄 "
++ files[i].name +
+"<br>";
+
+}
+
+if(text==""){
+
+text = "No file selected";
+
+}
+
+document.getElementById(
+"selectedFiles"
+).innerHTML = text;
+
+}
+
 /* UPLOAD */
 
 async function uploadPDF(){
@@ -811,6 +808,11 @@ var files =
 document.getElementById("pdfUpload")
 .files;
 
+var customName =
+document.getElementById(
+"customFileName"
+).value;
+
 if(files.length==0){
 
 alert("Select PDF");
@@ -819,9 +821,22 @@ return;
 
 }
 
+document.getElementById(
+"uploadStatus"
+).innerHTML =
+"⏳ Uploading...";
+
 for(var i=0;i<files.length;i++){
 
 var file = files[i];
+
+var finalName = customName;
+
+if(finalName==""){
+
+finalName = file.name;
+
+}
 
 var formData =
 new FormData();
@@ -829,6 +844,11 @@ new FormData();
 formData.append(
 "file",
 file
+);
+
+formData.append(
+"public_id",
+finalName
 );
 
 formData.append(
@@ -854,8 +874,6 @@ await response.json();
 var pdfURL =
 data.secure_url;
 
-/* SAVE */
-
 var savedPDFs =
 JSON.parse(
 localStorage.getItem(currentSubject)
@@ -872,6 +890,11 @@ JSON.stringify(savedPDFs)
 showPDF(pdfURL);
 
 }
+
+document.getElementById(
+"uploadStatus"
+).innerHTML =
+"✅ Upload Complete";
 
 openSubject(currentSubject);
 
