@@ -66,6 +66,7 @@ body{
     padding:20px;
     display:flex;
     align-items:center;
+    position:relative;
 }
 
 .drawer-logo{
@@ -73,12 +74,24 @@ body{
     height:90px;
     border-radius:50%;
     margin-right:20px;
+    object-fit:cover;
 }
 
 .drawer-title{
     color:#ffbf00;
     font-size:32px;
     font-weight:bold;
+}
+
+/* CLOSE BUTTON */
+
+.close-btn{
+    position:absolute;
+    right:20px;
+    top:20px;
+    color:#ffbf00;
+    font-size:30px;
+    cursor:pointer;
 }
 
 /* CREATED BOX */
@@ -137,12 +150,41 @@ body{
     height:110px;
     border-radius:50%;
     margin-right:20px;
+    object-fit:cover;
 }
 
 .heading{
-    color:#ffbf00;
     font-size:38px;
     font-weight:bold;
+    animation:rainbow 3s infinite;
+}
+
+@keyframes rainbow{
+
+0%{
+color:red;
+}
+
+20%{
+color:orange;
+}
+
+40%{
+color:yellow;
+}
+
+60%{
+color:lime;
+}
+
+80%{
+color:cyan;
+}
+
+100%{
+color:#ff00ff;
+}
+
 }
 
 /* SUBJECT BUTTONS */
@@ -158,10 +200,39 @@ body{
     font-weight:bold;
     cursor:pointer;
     transition:0.3s;
+    animation:rainbowBg 4s infinite;
 }
 
 .subject:hover{
     background:white;
+}
+
+@keyframes rainbowBg{
+
+0%{
+background:#ff0000;
+}
+
+20%{
+background:#ff9900;
+}
+
+40%{
+background:#ffee00;
+}
+
+60%{
+background:#00ff00;
+}
+
+80%{
+background:#00ccff;
+}
+
+100%{
+background:#ff00ff;
+}
+
 }
 
 /* OVERLAY */
@@ -291,12 +362,15 @@ Gowind Study
 
 <div class="drawer-header">
 
-<img src="logo.png"
+<img src="./logo.png"
 class="drawer-logo">
 
 <div class="drawer-title">
 GOWIND STUDY
 </div>
+
+<div class="close-btn"
+onclick="closeDrawer()">✖</div>
 
 </div>
 
@@ -398,7 +472,7 @@ onclick="closeDrawer()">
 
 <div class="header">
 
-<img src="logo.png"
+<img src="./logo.png"
 class="logo">
 
 <div class="heading">
@@ -465,7 +539,8 @@ function login(){
 
     /* USER LOGIN */
 
-    if(username=="user"
+    if((username=="user"
+    || username=="User")
     && password=="123"){
 
         alert("User Login Success");
@@ -476,7 +551,8 @@ function login(){
 
     /* ADMIN LOGIN */
 
-    else if(username=="gsadmin"
+    else if((username=="gsadmin"
+    || username=="Gsadmin")
     && password=="12+jee"){
 
         alert("Admin Login Success");
