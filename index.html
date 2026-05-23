@@ -10,159 +10,145 @@ content="width=device-width, initial-scale=1.0">
 <style>
 
 body{
-    margin:0;
-    font-family:Arial;
-    background:black;
+margin:0;
+font-family:Arial;
+background:black;
 }
 
 /* LOADER */
 
 #loader{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    z-index:99999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#ffbf00;
-    font-size:40px;
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+z-index:99999;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#ffbf00;
+font-size:40px;
 }
 
 /* TOPBAR */
 
 .topbar{
-    width:100%;
-    background:#111111;
-    padding:18px;
-    display:flex;
-    align-items:center;
-    position:fixed;
-    top:0;
-    z-index:1000;
+width:100%;
+background:#111;
+padding:18px;
+display:flex;
+align-items:center;
+position:fixed;
+top:0;
+z-index:1000;
 }
 
 .menu-btn{
-    font-size:35px;
-    cursor:pointer;
-    color:#ffbf00;
+font-size:35px;
+cursor:pointer;
+color:#ffbf00;
 }
 
 .title{
-    font-size:28px;
-    margin-left:20px;
-    color:#ffbf00;
+font-size:28px;
+margin-left:20px;
+color:#ffbf00;
 }
 
-/* LOGOUT */
-
 .logout-btn{
-    margin-left:auto;
-    background:red;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
+margin-left:auto;
+background:red;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* DRAWER */
 
 .drawer{
-    width:78%;
-    height:100%;
-    background:#050505;
-    position:fixed;
-    top:0;
-    left:-100%;
-    transition:0.4s;
-    z-index:2000;
-    overflow:auto;
-    box-shadow:5px 0px 15px black;
+width:78%;
+height:100%;
+background:#050505;
+position:fixed;
+top:0;
+left:-100%;
+transition:0.4s;
+z-index:2000;
+overflow:auto;
+box-shadow:5px 0px 15px black;
 }
 
 .drawer.active{
-    left:0;
+left:0;
 }
 
 .drawer-header{
-    background:#111;
-    padding:20px;
-    display:flex;
-    align-items:center;
-    position:relative;
+background:#111;
+padding:20px;
+display:flex;
+align-items:center;
+position:relative;
 }
 
 .drawer-logo{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    margin-right:20px;
-    object-fit:cover;
+width:90px;
+height:90px;
+border-radius:50%;
+margin-right:20px;
+object-fit:cover;
 }
 
 .drawer-title{
-    color:#ffbf00;
-    font-size:32px;
-    font-weight:bold;
+color:#ffbf00;
+font-size:32px;
+font-weight:bold;
 }
-
-/* CLOSE BUTTON */
 
 .close-btn{
-    position:absolute;
-    right:15px;
-    top:15px;
-    width:45px;
-    height:45px;
-    border:none;
-    border-radius:50%;
-    background:#ffbf00;
-    color:black;
-    font-size:26px;
-    font-weight:bold;
-    cursor:pointer;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    box-shadow:0 0 10px #000;
-    transition:0.3s;
-}
-
-.close-btn:hover{
-    transform:scale(1.1);
-    background:white;
+position:absolute;
+right:15px;
+top:15px;
+width:45px;
+height:45px;
+border:none;
+border-radius:50%;
+background:#ffbf00;
+color:black;
+font-size:26px;
+font-weight:bold;
+cursor:pointer;
 }
 
 /* MAIN */
 
 .main{
-    padding-top:120px;
+padding-top:120px;
 }
 
 /* HEADER */
 
 .header{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-top:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:20px;
 }
 
 .logo{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    margin-right:20px;
-    object-fit:cover;
+width:110px;
+height:110px;
+border-radius:50%;
+margin-right:20px;
+object-fit:cover;
 }
 
 .heading{
-    font-size:38px;
-    font-weight:bold;
-    animation:rainbow 3s infinite;
+font-size:38px;
+font-weight:bold;
+animation:rainbow 3s infinite;
 }
 
 @keyframes rainbow{
@@ -179,33 +165,33 @@ body{
 /* SEARCH */
 
 #searchInput{
-    width:80%;
-    padding:15px;
-    display:block;
-    margin:auto;
-    border-radius:30px;
-    border:none;
-    font-size:18px;
+width:80%;
+padding:15px;
+display:block;
+margin:auto;
+border-radius:30px;
+border:none;
+font-size:18px;
 }
 
-/* SUBJECTS */
+/* SUBJECT */
 
 .subject{
-    width:78%;
-    background:#ffbf00;
-    margin:22px auto;
-    padding:16px;
-    border-radius:50px;
-    text-align:center;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-    animation:rainbowBg 4s infinite;
+width:78%;
+background:#ffbf00;
+margin:22px auto;
+padding:16px;
+border-radius:50px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+animation:rainbowBg 4s infinite;
 }
 
 .subject:hover{
-    background:white;
+background:white;
 }
 
 @keyframes rainbowBg{
@@ -222,106 +208,140 @@ body{
 /* LOGIN */
 
 #loginPage{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:black;
-    top:0;
-    left:0;
-    z-index:5000;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+top:0;
+left:0;
+z-index:5000;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .login-box{
-    width:85%;
-    background:#111;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
+width:85%;
+background:#111;
+padding:30px;
+border-radius:20px;
+text-align:center;
 }
 
 .login-title{
-    color:#ffbf00;
-    font-size:35px;
+color:#ffbf00;
+font-size:35px;
 }
 
 .login-input{
-    width:90%;
-    padding:15px;
-    margin-top:20px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
+width:90%;
+padding:15px;
+margin-top:20px;
+border:none;
+border-radius:10px;
+font-size:18px;
 }
 
 .login-btn{
-    background:#ffbf00;
-    color:black;
-    padding:15px 40px;
-    border:none;
-    border-radius:50px;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
+background:#ffbf00;
+color:black;
+padding:15px 40px;
+border:none;
+border-radius:50px;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
 }
 
 #error{
-    color:red;
-    margin-top:15px;
+color:red;
+margin-top:15px;
 }
 
 /* DASHBOARD */
 
 #dashboard{
-    display:none;
-    padding:20px;
-    text-align:center;
+display:none;
+padding:20px;
+text-align:center;
 }
 
 #pdfContainer{
-    width:95%;
-    margin:auto;
-    margin-top:30px;
+width:95%;
+margin:auto;
+margin-top:30px;
 }
 
 #pdfCount{
-    color:#ffbf00;
-    text-align:center;
+color:#ffbf00;
+text-align:center;
 }
 
-/* DRAWER ITEMS */
+/* PDF CARD */
+
+.pdf-card{
+background:#111;
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+text-align:center;
+}
+
+.openBtn{
+display:block;
+background:#00ccff;
+color:black;
+padding:15px;
+border-radius:15px;
+font-size:20px;
+font-weight:bold;
+text-decoration:none;
+margin-top:15px;
+}
+
+.downloadBtn{
+display:block;
+background:#ffbf00;
+color:black;
+padding:15px;
+border-radius:15px;
+font-size:20px;
+font-weight:bold;
+text-decoration:none;
+margin-top:15px;
+}
+
+/* FOOTER */
 
 .creator-box{
-    margin:15px;
-    background:#0d0d0d;
-    padding:18px;
-    text-align:center;
-    color:#008cff;
-    font-size:20px;
-    font-weight:bold;
-    border:2px solid #111;
+margin:15px;
+background:#0d0d0d;
+padding:18px;
+text-align:center;
+color:#008cff;
+font-size:20px;
+font-weight:bold;
+border:2px solid #111;
 }
 
 .quote{
-    color:#00bfff;
-    font-size:18px;
-    padding:12px 20px;
+color:#00bfff;
+font-size:18px;
+padding:12px 20px;
 }
 
 .footer{
-    color:gray;
-    padding:25px;
-    font-style:italic;
-    font-size:18px;
-    text-align:center;
+color:gray;
+padding:25px;
+font-style:italic;
+font-size:18px;
+text-align:center;
 }
 
 .line{
-    height:2px;
-    background:gray;
-    margin:15px;
+height:2px;
+background:gray;
+margin:15px;
 }
 
 </style>
@@ -335,7 +355,7 @@ body{
 LOADING...
 </div>
 
-<!-- LOGIN PAGE -->
+<!-- LOGIN -->
 
 <div id="loginPage">
 
@@ -388,7 +408,8 @@ Logout
 
 <!-- DRAWER -->
 
-<div class="drawer" id="drawer">
+<div class="drawer"
+id="drawer">
 
 <div class="drawer-header">
 
@@ -467,7 +488,7 @@ GOWIND STUDY
 
 </div>
 
-<!-- ADMIN DASHBOARD -->
+<!-- ADMIN -->
 
 <div id="dashboard">
 
@@ -540,7 +561,6 @@ onchange="showFileNames()">
 style="
 color:#00ccff;
 font-size:18px;
-margin-top:10px;
 ">
 No file selected
 </div>
@@ -615,8 +635,9 @@ window.onload = function(){
 
 setTimeout(function(){
 
-document.getElementById("loader")
-.style.display = "none";
+document.getElementById(
+"loader"
+).style.display = "none";
 
 },2000);
 
@@ -626,15 +647,17 @@ document.getElementById("loader")
 
 function openDrawer(){
 
-document.getElementById("drawer")
-.classList.add("active");
+document.getElementById(
+"drawer"
+).classList.add("active");
 
 }
 
 function closeDrawer(){
 
-document.getElementById("drawer")
-.classList.remove("active");
+document.getElementById(
+"drawer"
+).classList.remove("active");
 
 }
 
@@ -643,40 +666,52 @@ document.getElementById("drawer")
 function login(){
 
 var username =
-document.getElementById("username").value;
+document.getElementById(
+"username"
+).value;
 
 var password =
-document.getElementById("password").value;
+document.getElementById(
+"password"
+).value;
 
-if((username=="user"
+if(
+(username=="user"
 || username=="User")
-&& password=="123"){
+&& password=="123"
+){
 
 alert("User Login Success");
 
-document.getElementById("loginPage")
-.style.display="none";
+document.getElementById(
+"loginPage"
+).style.display="none";
 
 }
 
-else if((username=="gsadmin"
+else if(
+(username=="gsadmin"
 || username=="Gsadmin")
-&& password=="12+jee"){
+&& password=="12+jee"
+){
 
 alert("Admin Login Success");
 
-document.getElementById("loginPage")
-.style.display="none";
+document.getElementById(
+"loginPage"
+).style.display="none";
 
-document.getElementById("dashboard")
-.style.display="block";
+document.getElementById(
+"dashboard"
+).style.display="block";
 
 }
 
 else{
 
-document.getElementById("error")
-.innerHTML =
+document.getElementById(
+"error"
+).innerHTML =
 "Wrong Username or Password";
 
 }
@@ -690,7 +725,9 @@ function openSubject(subject){
 currentSubject = subject;
 
 var container =
-document.getElementById("pdfContainer");
+document.getElementById(
+"pdfContainer"
+);
 
 container.innerHTML = "";
 
@@ -700,9 +737,11 @@ localStorage.getItem(subject)
 )
 || [];
 
-document.getElementById("pdfCount")
-.innerHTML =
-"PDFs : " + savedPDFs.length;
+document.getElementById(
+"pdfCount"
+).innerHTML =
+"PDFs : "
++ savedPDFs.length;
 
 savedPDFs.forEach(function(pdfURL){
 
@@ -717,52 +756,44 @@ showPDF(pdfURL);
 function showPDF(pdfURL){
 
 var container =
-document.getElementById("pdfContainer");
+document.getElementById(
+"pdfContainer"
+);
 
-var iframe =
-document.createElement("iframe");
+var card =
+document.createElement("div");
 
-iframe.src =
-"https://docs.google.com/gview?embedded=1&url="
-+ encodeURIComponent(pdfURL);
+card.className =
+"pdf-card";
 
-iframe.style.width = "100%";
+card.innerHTML =
 
-iframe.style.height = "500px";
+`
 
-iframe.style.marginTop = "20px";
+<div style="font-size:80px;">
+📄
+</div>
 
-iframe.style.border = "none";
+<h2 style="color:#ffbf00;">
+PDF READY
+</h2>
 
-iframe.style.borderRadius = "20px";
+<a href="${pdfURL}"
+target="_blank"
+class="openBtn">
+📖 OPEN PDF
+</a>
 
-container.appendChild(iframe);
+<a href="${pdfURL}"
+target="_blank"
+download
+class="downloadBtn">
+⬇ DOWNLOAD PDF
+</a>
 
-/* DOWNLOAD BUTTON */
+`;
 
-var downloadBtn =
-document.createElement("a");
-
-downloadBtn.href = pdfURL;
-
-downloadBtn.innerHTML =
-"⬇ DOWNLOAD PDF";
-
-downloadBtn.target = "_blank";
-
-downloadBtn.style.display =
-"block";
-
-downloadBtn.style.margin =
-"10px";
-
-downloadBtn.style.color =
-"#ffbf00";
-
-downloadBtn.style.fontSize =
-"20px";
-
-container.appendChild(downloadBtn);
+container.appendChild(card);
 
 }
 
@@ -771,28 +802,31 @@ container.appendChild(downloadBtn);
 function showFileNames(){
 
 var files =
-document.getElementById("pdfUpload")
-.files;
+document.getElementById(
+"pdfUpload"
+).files;
 
 var text = "";
 
 for(var i=0;i<files.length;i++){
 
 text += "📄 "
-+ files[i].name +
-"<br>";
++ files[i].name
++ "<br>";
 
 }
 
 if(text==""){
 
-text = "No file selected";
+text =
+"No file selected";
 
 }
 
 document.getElementById(
 "selectedFiles"
-).innerHTML = text;
+).innerHTML =
+text;
 
 }
 
@@ -801,12 +835,14 @@ document.getElementById(
 async function uploadPDF(){
 
 currentSubject =
-document.getElementById("subjectSelect")
-.value;
+document.getElementById(
+"subjectSelect"
+).value;
 
 var files =
-document.getElementById("pdfUpload")
-.files;
+document.getElementById(
+"pdfUpload"
+).files;
 
 var customName =
 document.getElementById(
@@ -830,11 +866,13 @@ for(var i=0;i<files.length;i++){
 
 var file = files[i];
 
-var finalName = customName;
+var finalName =
+customName;
 
 if(finalName==""){
 
-finalName = file.name;
+finalName =
+file.name;
 
 }
 
@@ -876,7 +914,9 @@ data.secure_url;
 
 var savedPDFs =
 JSON.parse(
-localStorage.getItem(currentSubject)
+localStorage.getItem(
+currentSubject
+)
 )
 || [];
 
@@ -884,7 +924,9 @@ savedPDFs.push(pdfURL);
 
 localStorage.setItem(
 currentSubject,
-JSON.stringify(savedPDFs)
+JSON.stringify(
+savedPDFs
+)
 );
 
 showPDF(pdfURL);
@@ -896,9 +938,13 @@ document.getElementById(
 ).innerHTML =
 "✅ Upload Complete";
 
-openSubject(currentSubject);
+openSubject(
+currentSubject
+);
 
-alert("PDF Uploaded Successfully");
+alert(
+"PDF Uploaded Successfully"
+);
 
 }
 
@@ -907,25 +953,34 @@ alert("PDF Uploaded Successfully");
 function searchSubjects(){
 
 var input =
-document.getElementById("searchInput")
-.value.toLowerCase();
+document.getElementById(
+"searchInput"
+).value.toLowerCase();
 
 var subjects =
-document.getElementsByClassName("subject");
+document.getElementsByClassName(
+"subject"
+);
 
 for(var i=0;i<subjects.length;i++){
 
-if(subjects[i].innerHTML
-.toLowerCase().includes(input)){
+if(
+subjects[i]
+.innerHTML
+.toLowerCase()
+.includes(input)
+){
 
-subjects[i].style.display =
+subjects[i]
+.style.display =
 "block";
 
 }
 
 else{
 
-subjects[i].style.display =
+subjects[i]
+.style.display =
 "none";
 
 }
@@ -942,10 +997,12 @@ location.reload();
 
 }
 
-/* VISITOR COUNT */
+/* VISITOR */
 
 var count =
-localStorage.getItem("visitors")
+localStorage.getItem(
+"visitors"
+)
 || 0;
 
 count++;
@@ -955,11 +1012,13 @@ localStorage.setItem(
 count
 );
 
-document.getElementById("visitorCount")
-.innerHTML =
-"Visitors : " + count;
+document.getElementById(
+"visitorCount"
+).innerHTML =
+"Visitors : "
++ count;
 
 </script>
 
 </body>
-</html>
+    </html>
